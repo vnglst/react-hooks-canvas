@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom'
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import './styles.css'
 
 const HOOK_SVG =
@@ -19,21 +19,49 @@ function draw(ctx, location) {
   ctx.restore()
 }
 
+function usePersistantState(init) {
+  const [value, setValue] = useState(
+    JSON.parse(localStorage.getItem('draw-app')) || init
+  )
+
+  useEffect(() => {
+    localStorage.setItem('draw-app', JSON.stringify(value))
+  })
+
+  return [value, setValue]
+}
+
 function App() {
+  const [locations, setLocations] = usePersistantState([])
   const canvasRef = useRef(null)
 
   const width = window.innerWidth
   const height = window.innerHeight
   const style = { width, height }
 
-  function handleDraw(e) {
+  useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
-    draw(ctx, { x: e.clientX, y: e.clientY })
+    ctx.clearRect(0, 0, height, width)
+    locations.forEach(location => draw(ctx, location))
+  })
+
+  function handleDraw(e) {
+    setLocations([...locations, { x: e.clientX, y: e.clientY }])
+  }
+
+  function handleClear() {
+    setLocations([])
+  }
+
+  function handleUndo() {
+    setLocations(locations.slice(0, -1))
   }
 
   return (
     <>
+      <button onClick={handleClear}>Clear</button>
+      <button onClick={handleUndo}>Undo</button>
       <canvas
         ref={canvasRef}
         width={width}
