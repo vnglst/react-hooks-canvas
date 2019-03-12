@@ -5,7 +5,7 @@ import { usePersistentCanvas } from './hooks'
 import './styles.css'
 
 function App() {
-  const [locations, setLocations, canvasRef] = usePersistentCanvas([])
+  const [locations, setLocations, canvasRef] = usePersistentCanvas()
 
   const width = window.innerWidth
   const height = window.innerHeight

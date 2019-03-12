@@ -29,8 +29,8 @@ export function usePersistentState(init) {
   return [locations, setLocations]
 }
 
-export function usePersistentCanvas(init) {
-  const [locations, setLocations] = usePersistentState(init)
+export function usePersistentCanvas() {
+  const [locations, setLocations] = usePersistentState([])
   const canvasRef = useRef(null)
 
   useEffect(() => {

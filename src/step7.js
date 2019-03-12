@@ -19,7 +19,7 @@ function draw(ctx, location) {
   ctx.restore()
 }
 
-function usePersistantState(init) {
+function usePersistentState(init) {
   const [value, setValue] = useState(
     JSON.parse(localStorage.getItem('draw-app')) || init
   )
@@ -32,7 +32,7 @@ function usePersistantState(init) {
 }
 
 function App() {
-  const [locations, setLocations] = usePersistantState([])
+  const [locations, setLocations] = usePersistentState([])
   const canvasRef = useRef(null)
 
   const width = window.innerWidth
