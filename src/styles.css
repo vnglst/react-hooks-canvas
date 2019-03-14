@@ -2,3 +2,11 @@ body {
   background-color: black;
   color: deepskyblue;
 }
+
+button {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+}

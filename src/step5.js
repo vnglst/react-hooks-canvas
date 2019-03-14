@@ -27,7 +27,6 @@ function App() {
 
   const width = window.innerWidth
   const height = window.innerHeight
-  const style = { width, height }
 
   useEffect(() => {
     localStorage.setItem('draw-app', JSON.stringify(locations))
@@ -55,7 +54,6 @@ function App() {
         ref={canvasRef}
         width={width}
         height={height}
-        style={style}
         onClick={handleDraw}
       />
     </>

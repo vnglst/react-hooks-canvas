@@ -23,10 +23,6 @@ function App() {
   const [locations, setLocations] = useState([])
   const canvasRef = useRef(null)
 
-  const width = window.innerWidth
-  const height = window.innerHeight
-  const style = { width, height }
-
   function handleDraw(e) {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
@@ -45,9 +41,8 @@ function App() {
       <button onClick={handleClear}>Clear</button>
       <canvas
         ref={canvasRef}
-        width={width}
-        height={height}
-        style={style}
+        width={window.innerWidth}
+        height={window.innerHeight}
         onClick={handleDraw}
       />
     </>

@@ -25,7 +25,6 @@ function App() {
 
   const width = window.innerWidth
   const height = window.innerHeight
-  const style = { width, height }
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -49,7 +48,6 @@ function App() {
         ref={canvasRef}
         width={width}
         height={height}
-        style={style}
         onClick={handleDraw}
       />
     </>

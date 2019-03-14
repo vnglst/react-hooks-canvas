@@ -7,10 +7,6 @@ import './styles.css'
 function App() {
   const [locations, setLocations, canvasRef] = usePersistentCanvas()
 
-  const width = window.innerWidth
-  const height = window.innerHeight
-  const style = { width, height }
-
   function handleDraw(e) {
     setLocations([...locations, { x: e.clientX, y: e.clientY }])
   }
@@ -29,9 +25,8 @@ function App() {
       <button onClick={handleUndo}>Undo</button>
       <canvas
         ref={canvasRef}
-        width={width}
-        height={height}
-        style={style}
+        width={window.innerWidth}
+        height={window.innerHeight}
         onClick={handleDraw}
       />
     </>
