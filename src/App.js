@@ -6,7 +6,7 @@ import './App.css'
 function App() {
   const [locations, setLocations, canvasRef] = usePersistentCanvas()
 
-  function handleDraw(e) {
+  function handleCanvasClick(e) {
     setLocations([...locations, { x: e.clientX, y: e.clientY }])
   }
 
@@ -28,7 +28,7 @@ function App() {
         ref={canvasRef}
         width={window.innerWidth}
         height={window.innerHeight}
-        onClick={handleDraw}
+        onClick={handleCanvasClick}
       />
     </>
   )
