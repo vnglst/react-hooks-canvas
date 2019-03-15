@@ -20,8 +20,10 @@ function App() {
 
   return (
     <>
-      <button onClick={handleClear}>Clear</button>
-      <button onClick={handleUndo}>Undo</button>
+      <div className="controls">
+        <button onClick={handleClear}>Clear</button>
+        <button onClick={handleUndo}>Undo</button>
+      </div>
       <canvas
         ref={canvasRef}
         width={window.innerWidth}

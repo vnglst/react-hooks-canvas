@@ -8,6 +8,12 @@ body {
   background-color: black;
 }
 
+.controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 button {
   height: 3em;
   width: 6em;
